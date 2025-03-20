@@ -15,7 +15,7 @@ exports.createUser = async (req, res) => {
     email: req.body.email,
   });
   // eslint-disable-next-line no-console
-  console.log(user, 'testing the diff branchs 20 marhcessss');
+  console.log(user, 'testing the diff branchs 20 marhcess344ss');
   try {
     const newUser = await user.save();
     res.status(201).json(newUser);
