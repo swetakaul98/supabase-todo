@@ -1,0 +1,33 @@
+image: node:16
+
+pipelines:
+  default:
+    - step:
+        name: Lint and Build test
+        caches:
+          - node
+        script:
+          - npm ci
+          - npm list eslint eslint-config-airbnb-base
+          - npm run lint
+  branches:
+    main:
+      - step:
+          name: Lint and Build
+          caches:
+            - node
+          script:
+            - npm ci
+            - npm list eslint eslint-config-airbnb-base
+            - npm run lint
+    master:
+      - step:
+          name: Lint and Build
+          image: node:18
+          caches:
+            - node
+          script:
+            - npm ci
+            - npm list eslint eslint-config-airbnb-base
+            - npm run lint
+            - npm test
